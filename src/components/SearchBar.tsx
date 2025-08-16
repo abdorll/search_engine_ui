@@ -20,34 +20,17 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   const [query, setQuery] = useState("");
   const [suggestion, setSuggestion] = useState<string>("");
   const [showSuggestion, setShowSuggestion] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
-  const suggestionRefs = useRef<(HTMLLIElement | null)[]>([]);
-
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     let prefix = query.split(" ")[-1];
-  //     if (prefix.length > 0) {
-  //       let matches = onAutocomplete(prefix.toLowerCase());
-
-  //     }
-  //     if (query.length >= 2) {
-  //       const matches = onAutocomplete(query);
-  //       setSuggestion(matches);
-  //       setShowSuggestion(matches.length > 0);
-  //       setSelectedIndex(-1);
-  //     } else {
-  //       setSuggestion([]);
-  //       setShowSuggestion(false);
-  //     }
-  //   }, 150);
-
-  //   return () => clearTimeout(timeoutId);
-  // }, [query, onAutocomplete]);
 
   useEffect(() => {
     setSuggestion("");
-    if (query) handleAutoSuggest(query);
+    let tId = setTimeout(() => {
+      if (query) handleAutoSuggest(query);
+    }, 500)
+
+    return () => {
+      clearTimeout(tId);
+    }
   }, [query]);
 
   const handleSearch = () => {
@@ -64,7 +47,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     const match = await onAutocomplete(prefix);
 
     if (match) {
-      setSuggestion(rem + match);
+      setSuggestion(rem + prefix + match.slice(prefix.length));
       setShowSuggestion(true);
     }
   };
@@ -87,12 +70,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         setQuery(suggestion);
         setShowSuggestion(false);
       }
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setSelectedIndex(prev => Math.min(prev + 1, suggestion.length - 1));
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setSelectedIndex(prev => Math.max(prev - 1, -1));
     } else if (e.key === 'Escape') {
       setShowSuggestion(false);
     }
@@ -127,7 +104,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         {query && (
           <button
             onClick={handleSearch}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-600 transition-colors"
+            className="absolute right-3 z-[10] top-1/2 transform -translate-y-1/2 bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-600 transition-colors"
           >
             Search
           </button>
