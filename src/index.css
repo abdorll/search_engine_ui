@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "axle"; /* A unique name for your font */
+    src: url("/fonts/axle-bc.woff") format("woff"); /* Path to TrueType font file */
+    font-weight: normal; /* Optional: Define the font's weight (e.g., normal, bold, or numeric values like 400, 700) */
+    font-style: normal; /* Optional: Define the font's style (e.g., normal, italic, oblique) */
+    font-display: swap; /* Optional: Controls how font is displayed while loading */
+  }
+  @font-face {
+    font-family: "moonx"; /* A unique name for your font */
+    src: url("/fonts/moonx-bc.woff") format("woff"); /* Path to TrueType font file */
+    font-weight: normal; /* Optional: Define the font's weight (e.g., normal, bold, or numeric values like 400, 700) */
+    font-style: normal; /* Optional: Define the font's style (e.g., normal, italic, oblique) */
+    font-display: swap; /* Optional: Controls how font is displayed while loading */
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.38);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5.6px);
+    -webkit-backdrop-filter: blur(5.6px);
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    border: 1px solid rgba(170, 98, 246, 0.3);
+  }
+  .search {
+    position: relative;
+  }
+  .search::before {
+    content: attr(data-suggest);
+    display: inline;
+    padding-top: inherit;
+    padding-left: inherit;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    color: #9ca3af; /* Tailwind's slate-400 */
+  }
+}
