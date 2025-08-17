@@ -8,7 +8,7 @@ import { documents } from "../data/documents";
 import { SearchResult, AutocompleteMatch } from "../types";
 import Three from "../components/model";
 import Header from "../components/Header";
-import { autoComplete } from "../utils/action";
+import { autoComplete, searchQuery } from "../utils/action";
 
 type pageState = "landing" | "results" | "document";
 
@@ -28,8 +28,8 @@ function SearchPage() {
   const [currentDocument, setCurrentDocument] = useState<string>("");
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
 
-  const handleSearch = (query: string) => {
-    const results = searchEngine.search(query);
+  const handleSearch = async (query: string) => {
+    const results = await searchQuery(query);
     setSearchResults(results);
     setCurrentQuery(query);
     setSearchTerms(
@@ -94,7 +94,7 @@ function SearchPage() {
   return (
     <>
       <Header />
-      {/* <Three /> */}
+      <Three />
       <div className="relative min-h-screen p-8 pt-20">
         <div className="flex flex-col justify-center min-h-screen px-4">
           <div className="h-full flex flex-col max-w-4xl mx-auto w-full text-center justify-between gap-y-[10rem]">

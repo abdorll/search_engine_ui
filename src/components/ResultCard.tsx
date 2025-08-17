@@ -31,29 +31,15 @@ export const ResultCard: React.FC<ResultCardProps> = ({ result, onViewDocument, 
           </p>
           
           <div className="space-y-2">
-            {Object.keys(keywordStats.foundTerms).length > 0 && (
+            {Object.keys(keywordStats).length > 0 && (
               <div className="flex flex-wrap gap-2">
-                {Object.entries(keywordStats.foundTerms).map(([term, count]) => (
+                {Object.entries(keywordStats).map(([term, count]) => (
                   <span 
                     key={term}
                     className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-100 text-emerald-800 text-sm font-medium rounded-full"
                   >
                     <span className="font-semibold">"{term}"</span>
                     <span className="text-emerald-600">• {count} match{count > 1 ? 'es' : ''}</span>
-                  </span>
-                ))}
-              </div>
-            )}
-            
-            {keywordStats.missingTerms.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-2">
-                {keywordStats.missingTerms.map((term) => (
-                  <span 
-                    key={term}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-full"
-                  >
-                    <span className="font-semibold">"{term}"</span>
-                    <span className="text-slate-500">• not found</span>
                   </span>
                 ))}
               </div>

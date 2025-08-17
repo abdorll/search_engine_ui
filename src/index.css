@@ -17,6 +17,15 @@
     font-style: normal; /* Optional: Define the font's style (e.g., normal, italic, oblique) */
     font-display: swap; /* Optional: Controls how font is displayed while loading */
   }
+  body {
+    @apply bg-gradient-to-br from-slate-50 via-white to-indigo-50;
+  }
+  body::after {
+    @apply bg-[url('/images/noise.png')] w-full h-full fixed top-0 left-0 z-[-1] block;
+    content: "";
+    opacity: 0.1;
+    background-size: 200px auto;
+  }
 }
 
 @layer components {
