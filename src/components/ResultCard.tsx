@@ -4,7 +4,7 @@ import { SearchResult } from '../types';
 
 interface ResultCardProps {
   result: SearchResult;
-  onViewDocument: (id: string, query: string) => void;
+  onViewDocument: (url: string) => void;
   query: string;
 }
 
@@ -14,7 +14,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ result, onViewDocument, 
   return (
     <div 
       className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md hover:border-indigo-200 transition-all cursor-pointer group"
-      onClick={() => onViewDocument(document.id, query)}
+      onClick={() => onViewDocument("https://res.cloudinary.com/dpfuj9km4/raw/upload/v1754998186/" + document.filePath)}
     >
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 transition-colors">

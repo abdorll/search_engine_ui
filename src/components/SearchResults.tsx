@@ -7,7 +7,7 @@ interface SearchResultsProps {
   results: SearchResult[];
   query: string;
   onBack: () => void;
-  onViewDocument: (id: string, query: string) => void;
+  onViewDocument: (url: string) => void;
 }
 
 export const SearchResults: React.FC<SearchResultsProps> = ({

@@ -19,7 +19,7 @@ function Loader() {
 }
 function Three() {
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none select-none">
+    <div className="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none select-none overflow-hidden">
       <Canvas>
         {/* <ambientLight intensity={0.2} /> */}
         {/* <directionalLight /> */}

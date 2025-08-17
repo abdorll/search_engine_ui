@@ -41,17 +41,22 @@ function SearchPage() {
     setState("results");
   };
 
-  const handleViewDocument = (documentId: string, query: string) => {
-    setCurrentDocument(documentId);
-    setCurrentQuery(query);
-    setSearchTerms(
-      query
-        .toLowerCase()
-        .split(/\s+/)
-        .filter((term) => term.length > 0)
-    );
-    setState("document");
+  // const handleViewDocument = (documentId: string, query: string) => {
+  //   setCurrentDocument(documentId);
+  //   setCurrentQuery(query);
+  //   setSearchTerms(
+  //     query
+  //       .toLowerCase()
+  //       .split(/\s+/)
+  //       .filter((term) => term.length > 0)
+  //   );
+  //   setState("document");
+  // };
+
+  const handleViewDocument = (documentUrl: string) => {
+    window.open(documentUrl, '_blank');
   };
+  
 
   const handleBackToLanding = () => {
     setState("landing");
@@ -95,7 +100,7 @@ function SearchPage() {
     <>
       <Header />
       <Three />
-      <div className="min-h-screen p-8 pt-20">
+      <div className="min-h-screen">
         <div className="flex flex-col justify-center min-h-screen px-4">
           <div className="h-full flex flex-col max-w-4xl mx-auto w-full text-center justify-between gap-y-[10rem]">
             <div className="">
