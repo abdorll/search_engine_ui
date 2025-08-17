@@ -12,8 +12,7 @@ type AppState = 'landing' | 'results' | 'document';
 const searchEngine = new SearchEngine(documents);
 
 const animatedPhrases = [
-  "Search through local documents instantly.",
-  "No internet needed — completely offline.",
+  "Search through MetaSeek's documents search engine instantly.",
   "Smart autocomplete for faster results.",
   "Highlight and navigate through your matches."
 ];
