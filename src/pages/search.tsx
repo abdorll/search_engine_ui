@@ -95,16 +95,16 @@ function SearchPage() {
     <>
       <Header />
       <Three />
-      <div className="relative min-h-screen p-8 pt-20">
+      <div className="min-h-screen p-8 pt-20">
         <div className="flex flex-col justify-center min-h-screen px-4">
           <div className="h-full flex flex-col max-w-4xl mx-auto w-full text-center justify-between gap-y-[10rem]">
-            <div>
+            <div className="">
               {/* Logo/Title */}
               <div className="mb-8">
-                <h1 className="text-[5rem] leading-10 font-bold text-slate-800 mb-4 font-display">
+                <h1 className="pass-through test text-[5rem] leading-10 font-bold text-slate-800 mb-4 font-display z-[-500]" data-content="MetaSeek">
                   MetaSeek
                 </h1>
-                <p className="text-xl text-slate-600">
+                <p className="relative text-xl text-slate-600">
                   Discover information in your local documents
                 </p>
               </div>
@@ -114,10 +114,11 @@ function SearchPage() {
                 onSearch={handleSearch}
                 onAutocomplete={autoComplete}
                 large={true}
+                className="relative"
               />
             </div>
 
-            <div className="glass p-4">
+            <div className="glass p-4 relative">
               {/* Animated Features */}
               <div className="mb-12">
                 <AnimatedText phrases={animatedPhrases} />

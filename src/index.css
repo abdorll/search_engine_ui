@@ -51,4 +51,16 @@
     z-index: 1;
     color: #9ca3af; /* Tailwind's slate-400 */
   }
+  .pass-through {
+    position: static;
+  }
+  .pass-through::before {
+    content: attr(data-content);
+    z-index: 1;
+    position: absolute;
+    display: inline;
+    text-align: center;
+    -webkit-text-stroke: #1e293b 1px;
+    color: transparent;
+  }
 }
